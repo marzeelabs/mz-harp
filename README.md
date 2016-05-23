@@ -1,6 +1,6 @@
 # MZ Harp
 
-[![Heroku](http://heroku-badge.herokuapp.com/?app=mz-harp&style=flat&root=posts/)]
+![Heroku](http://heroku-badge.herokuapp.com/?app=mz-harp&style=flat)
 
 Boilerplate for [Harp](http://harpjs.com) with Gulp support, responsive images and a simple blog structure.
 

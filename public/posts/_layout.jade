@@ -4,8 +4,8 @@ block page_content
 
   .blog-post
 
-    if public.blog._data.posts[current.source]['cover-img']
-      - var coverFilename = public.blog._data.posts[current.source]['cover-img'].split('.');
+    if public.posts._data.posts[current.source]['cover-img']
+      - var coverFilename = public.posts._data.posts[current.source]['cover-img'].split('.');
       - var coverExtension = coverFilename.pop();
       - coverFilename.join('.');
 
@@ -43,9 +43,9 @@ block page_content
 
 
 
-    .blog-post__cover(class='#{public.blog._data.posts[current.source].darkTitles === true ? "blog-post__cover--dark" : ""}')
-      h1.blog-post__title #{public.blog._data.posts[current.source].title}
-      h3.blog-post__subtitle #{public.blog._data.posts[current.source].subtitle}
+    .blog-post__cover(class='#{public.posts._data.posts[current.source].darkTitles === true ? "blog-post__cover--dark" : ""}')
+      h1.blog-post__title #{public.posts._data.posts[current.source].title}
+      h3.blog-post__subtitle #{public.posts._data.posts[current.source].subtitle}
 
     .blog-post__content-wrapper.blog-post__section.section-inner
       .blog-post__content
@@ -89,4 +89,4 @@ block page_content
   //- .pager-wrapper
     //- include ../_partials/_post_pager
 
-  //- include ../_partials/_footer
+  include ../_partials/_footer

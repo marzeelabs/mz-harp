@@ -1,8 +1,8 @@
 # MZ Harp
 
-Boilerplate for [Harp](http://harpjs.com).
+[![Heroku](http://heroku-badge.herokuapp.com/?app=mz-harp&style=flat)]
 
-Made by [Marzee Labs](http://marzeelabs.org)
+Boilerplate for [Harp](http://harpjs.com) with Gulp support, responsive images and a simple blog structure.
 
 ## Setup
 
@@ -36,3 +36,6 @@ For development guidelines, please check the harp documentation at http://harpjs
 
 In order to review the static site, this boilerplate is integrated with [Heroku's pipelines](https://devcenter.heroku.com/articles/pipelines), which spins up a new site for each pull request and commit.
 
+## Credits 
+
+Made by [Marzee Labs](http://marzeelabs.org)

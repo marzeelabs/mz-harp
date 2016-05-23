@@ -1,9 +1,12 @@
 {
-  "name": "marzeelabs",
+  "name": "mz-harp",
   "version": "0.2.0",
   "main": "gulpfile.js",
   "author": "Marzee Labs <info@marzeelabs.org>",
   "license": "GPLv3",
+  "scripts": {
+    "deploy": "./scripts/deploy.sh"
+  },
   "dependencies": {
     "breakpoint-sass": "^2.7.0",
     "browser-sync": "^2.11.1",

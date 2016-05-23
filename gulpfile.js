@@ -13,10 +13,10 @@ var uglify      = require('gulp-uglify');
  */
 gulp.task('serve', function (done) {
   harp.server('.', {
-    port: 3333
+    port: 3330
   }, function () {
     browserSync({
-      proxy: "localhost:3333",
+      proxy: "localhost:3330",
       open: false,
       port: 3333,
       ui: {

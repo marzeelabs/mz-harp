@@ -28,8 +28,11 @@ The default task for *gulp* will:
 
 The default *gulp* tasks take care of processing the images in various sizes for the responsive image markup, as well as replacing the code in the compiled HTML. All that is required is for the author to add the image files in the *_posts-images* directory and include the base image (also copied to *public/images/posts/*) in the post - e.g. *[alt](/images/posts/file.extension)*
 
-## Develop
+## Development
 
 For development guidelines, please check the harp documentation at http://harpjs.com/docs/development/
 
+## Reviewing and hosting
+
+In order to review the static site, this boilerplate is integrated with [Heroku's pipelines](https://devcenter.heroku.com/articles/pipelines), which spins up a new site for each pull request and commit.
 

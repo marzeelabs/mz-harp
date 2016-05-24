@@ -2,7 +2,6 @@ language: node_js
 node_js:
 - 4.4.4
 before_script:
-- npm install
 - chmod +x ./scripts/deploy.sh
 script: gulp build
 after_success: npm run-script deploy

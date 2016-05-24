@@ -6,8 +6,8 @@ Boilerplate for [Harp](http://harpjs.com) with Gulp support, responsive images a
 
 ## Setup
 
-1. Clone the repository from GitHub with: `git clone git@github.com:marzeelabs/mz-harp`
-2. Navigate inside the new directory with `cd marzeelabs.github.io`
+1. Setup boilerplate: `harp init my-harp --boilerplate marzeelabs/mz-harp`
+2. Navigate inside the new directory with `cd my-harp`
 3. Install all dependencies with `npm install`
 4. Install gulp and harp globally with `npm install -g gulp harp` so you get the CLIs available
 

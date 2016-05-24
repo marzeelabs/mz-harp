@@ -2,7 +2,7 @@
 
 # Only deploy from master branch
 if [[ $TRAVIS_BRANCH == 'master' ]]
-  echo "Starting deployment from master branch"
+  echo "Starting deployment"
   echo "Target: gh-pages branch"
 
   TEMP_DIRECTORY="/tmp/__temp_static_content"

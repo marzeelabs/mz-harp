@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Only deploy from master branch
-if [[ $TRAVIS_BRANCH == 'master' ]]
-  echo "Starting deployment"
+if [ $TRAVIS_BRANCH == 'master' ]
+then
+  echo "Starting deployment from the master branch"
   echo "Target: gh-pages branch"
 
   TEMP_DIRECTORY="/tmp/__temp_static_content"
@@ -38,4 +39,6 @@ if [[ $TRAVIS_BRANCH == 'master' ]]
 
   echo "Deployed successfully."
   exit 0
+else
+  echo "Skipping deployment: we only deploy to Github pages from the master branch"
 fi

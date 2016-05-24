@@ -16,6 +16,8 @@ ls -l
 ls -l www
 mv www $TEMP_DIRECTORY
 
+gulp build
+
 echo "Checking out gh-pages branch"
 git checkout -B gh-pages || exit 1
 

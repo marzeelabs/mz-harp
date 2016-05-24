@@ -3,7 +3,22 @@
     "layout": "_index_layout"
   },
   "posts": {
-    "2016-05-23-hello-world": {
+    "2016-01-01-hello-world": {
+      "title": "Hello World",
+      "subtitle": "It's a great time to start using HarpJS",
+      "darkTitles": false,
+      "tags": [
+        "these",
+        "are",
+        "tags"
+      ],
+      "author": "peter",
+      "comments": true,
+      "cover-img": "/images/posts/sky-earth-space.jpg",
+      "date": "2016-01-01",
+      "published": true
+    },
+    "2016-05-23-demo-post": {
       "title": "This is a demo blog post title",
       "subtitle": "And I'm the subtitle of the demo blog post",
       "darkTitles": true,
@@ -12,11 +27,12 @@
         "are",
         "tags"
       ],
-      "author": "peter",
+      "author": "luis",
       "comments": true,
-      "cover-img": "/images/posts/earth.jpg",
+      "cover-img": "/images/posts/night-sky.jpg",
       "date": "2016-05-23",
       "published": true
     }
+
   }
 }

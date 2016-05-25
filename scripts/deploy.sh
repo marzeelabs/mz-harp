@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Only deploy from master branch
+# Only deploy from the configured branch
 if [ $TRAVIS_BRANCH == $DEPLOY_FROM ]
 then
   echo "Starting deployment from the $DEPLOY_FROM branch"

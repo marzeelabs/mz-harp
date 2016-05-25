@@ -1,41 +1,48 @@
 #!/bin/bash
-echo "Starting deployment"
-echo "Target: gh-pages branch"
 
-TEMP_DIRECTORY="/tmp/__temp_static_content"
-CURRENT_COMMIT=`git rev-parse HEAD`
-ORIGIN_URL=`git config --get remote.origin.url`
-ORIGIN_URL_WITH_CREDENTIALS=${ORIGIN_URL/\/\/github.com/\/\/$GITHUB_TOKEN@github.com}
+DEPLOY_FROM="master"
+DEPLOY_TO="gh-pages"
 
-# echo "Compiling new static content"
-# mkdir $TEMP_DIRECTORY || exit 1
-# harp compile . $TEMP_DIRECTORY || exit 1
-# cp .gitignore $TEMP_DIRECTORY || exit 1
-pwd
-ls -l
-ls -l www
-mv www $TEMP_DIRECTORY
+# Only deploy from the configured branch
+if [ $TRAVIS_BRANCH == $DEPLOY_FROM ]
+then
+  echo "Starting deployment from the $DEPLOY_FROM branch"
+  echo "Target: $DEPLOY_TO branch"
 
-echo "Checking out gh-pages branch"
-git checkout -B gh-pages || exit 1
+  TEMP_DIRECTORY="/tmp/__temp_static_content"
+  CURRENT_COMMIT=`git rev-parse HEAD`
+  ORIGIN_URL=`git config --get remote.origin.url`
+  ORIGIN_URL_WITH_CREDENTIALS=${ORIGIN_URL/\/\/github.com/\/\/$GITHUB_TOKEN@github.com}
 
-echo "Removing old static content"
-git rm -rf . || exit 1
+  echo "Compiling new static content"
+  mkdir $TEMP_DIRECTORY || exit 1
+  harp compile . $TEMP_DIRECTORY || exit 1
+  cp .gitignore $TEMP_DIRECTORY || exit 1
+  cp CNAME $TEMP_DIRECTORY || exit 1
 
-echo "Copying newly generated static content"
-cp -r $TEMP_DIRECTORY/* . || exit 1
-cp $TEMP_DIRECTORY/.gitignore . || exit 1
+  echo "Checking out $DEPLOY_TO branch"
+  git checkout -B $DEPLOY_TO || exit 1
 
-echo "Pushing new content to $ORIGIN_URL"
-git config user.name "Travis CI" || exit 1
-git config user.email "travis@marzeelabs.org" || exit 1
+  echo "Removing old static content"
+  git rm -rf . || exit 1
 
-git add -A . || exit 1
-git commit --allow-empty -m "Regenerated static content for $CURRENT_COMMIT" || exit 1
-git push --force --quiet "$ORIGIN_URL_WITH_CREDENTIALS" gh-pages > /dev/null 2>&1
+  echo "Copying newly generated static content"
+  cp -r $TEMP_DIRECTORY/* . || exit 1
+  cp $TEMP_DIRECTORY/.gitignore . || exit 1
 
-echo "Cleaning up temp files"
-rm -Rf $TEMP_DIRECTORY
+  echo "Pushing new content to $ORIGIN_URL"
+  git config user.name "Travis CI" || exit 1
+  git config user.email "travis@marzeelabs.org" || exit 1
 
-echo "Deployed successfully."
-exit 0
+  git add -A . || exit 1
+  git commit --allow-empty -m "Regenerated static content for $CURRENT_COMMIT" || exit 1
+  git push --force --quiet "$ORIGIN_URL_WITH_CREDENTIALS" $DEPLOY_TO > /dev/null 2>&1
+
+  echo "Cleaning up temp files"
+  rm -Rf $TEMP_DIRECTORY
+
+  echo "Deployed successfully."
+  exit 0
+else
+  echo "Skipping deployment: we only deploy from the $DEPLOY_FROM branch"
+fi

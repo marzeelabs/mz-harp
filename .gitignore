@@ -6,3 +6,6 @@ Thumbs.db
 .DS_Store
 !.gitkeep
 www/
+public/images/home/*
+public/images/posts/*
+

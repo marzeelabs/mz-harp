@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Only deploy from master branch
-if [ $TRAVIS_BRANCH == 'master' ]
+if [ $TRAVIS_BRANCH == $DEPLOY_FROM ]
 then
-  echo "Starting deployment from the master branch"
-  echo "Target: gh-pages branch"
+  echo "Starting deployment from the $DEPLOY_FROM branch"
+  echo "Target: $DEPLOY_TO branch"
 
   TEMP_DIRECTORY="/tmp/__temp_static_content"
   CURRENT_COMMIT=`git rev-parse HEAD`
@@ -16,8 +16,8 @@ then
   harp compile . $TEMP_DIRECTORY || exit 1
   cp .gitignore $TEMP_DIRECTORY || exit 1
 
-  echo "Checking out gh-pages branch"
-  git checkout -B gh-pages || exit 1
+  echo "Checking out $DEPLOY_TO branch"
+  git checkout -B $DEPLOY_TO || exit 1
 
   echo "Removing old static content"
   git rm -rf . || exit 1
@@ -32,7 +32,7 @@ then
 
   git add -A . || exit 1
   git commit --allow-empty -m "Regenerated static content for $CURRENT_COMMIT" || exit 1
-  git push --force --quiet "$ORIGIN_URL_WITH_CREDENTIALS" gh-pages > /dev/null 2>&1
+  git push --force --quiet "$ORIGIN_URL_WITH_CREDENTIALS" $DEPLOY_TO > /dev/null 2>&1
 
   echo "Cleaning up temp files"
   rm -Rf $TEMP_DIRECTORY
@@ -40,5 +40,5 @@ then
   echo "Deployed successfully."
   exit 0
 else
-  echo "Skipping deployment: we only deploy to Github pages from the master branch"
+  echo "Skipping deployment: we only deploy from the $DEPLOY_FROM branch"
 fi

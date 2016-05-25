@@ -1,8 +1,4 @@
 language: node_js
-env:
-  global:
-    - DEPLOY_FROM="master"
-    - DEPLOY_TO="gh-pages"
 node_js:
 - 4.4.4
 before_script:

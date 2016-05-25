@@ -1,5 +1,8 @@
 #!/bin/bash
 
+DEPLOY_FROM="master"
+DEPLOY_TO="gh-pages"
+
 # Only deploy from the configured branch
 if [ $TRAVIS_BRANCH == $DEPLOY_FROM ]
 then
@@ -15,6 +18,7 @@ then
   mkdir $TEMP_DIRECTORY || exit 1
   harp compile . $TEMP_DIRECTORY || exit 1
   cp .gitignore $TEMP_DIRECTORY || exit 1
+  cp CNAME $TEMP_DIRECTORY || exit 1
 
   echo "Checking out $DEPLOY_TO branch"
   git checkout -B $DEPLOY_TO || exit 1

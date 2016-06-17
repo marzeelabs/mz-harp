@@ -3,6 +3,16 @@
 DEPLOY_FROM="master"
 DEPLOY_TO="gh-pages"
 
+# Do not deploy when building pull requests.
+# If this build comes from an unmerged pull request, it will be ignored.
+# In order to have automated deployemnts, you must have builds active on
+# pushes (merges) in your Travis settings for the repo (Travis dashboard).
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]
+then
+  echo "Skipping deployment: we do not deploy Pull Request test builds."
+  exit 0
+fi
+
 # Only deploy from the configured branch
 if [ $TRAVIS_BRANCH == $DEPLOY_FROM ]
 then

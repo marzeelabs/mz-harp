@@ -29,8 +29,6 @@ html(lang='en')
     // Modernizr
     //- script(src='/js/modernizr-custom.min.js')
 
-    //- include ../_partials/analytics
-
   body(class='#{current.path[0] === "index" ? "body--home" : ""}')
 
     //- include ../_partials/_header
@@ -41,3 +39,6 @@ html(lang='en')
     //- script(src='/js/site.min.js')
     //- if (current.path[0] === "index")
         script(src='/js/home.min.js')
+
+    if analytics
+      include ../_partials/_analytics

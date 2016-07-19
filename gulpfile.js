@@ -77,7 +77,7 @@ gulp.task('serveprod', ['build'], function() {
 /**
  * Build the Harp Site
  */
-gulp.task('build', ['jimp', 'uglify'], function () {
+gulp.task('build', ['copy-css-assets', 'jimp', 'uglify'], function () {
   return cp.exec('harp compile . www', {stdio: 'inherit'})
 });
 
@@ -156,10 +156,32 @@ gulp.task('jimp', function (callback) {
   );
 });
 
+
+/**
+ * Copy css assets from NODE Modules
+ */
+gulp.task('copy-css-assets', function() {
+  return gulp.src(
+  /** Insert below the css path **/
+  ['  ']
+  ).pipe(gulp.dest('./public/css/vendors'));
+});
+
+/**
+ * Copy js assets from NODE Modules
+ */
+gulp.task('copy-js-assets', function() {
+  return gulp.src(
+  /** Insert below the js path **/
+  ['  ']
+  ).pipe(gulp.dest('./public/_scripts'));
+});
+
+
 /**
  * Concatenate JS files
  */
-gulp.task('uglify', function () {
+gulp.task('uglify', ['copy-js-assets'], function () {
   return gulp.src([
     'public/_scripts/jquery-1.10.2.min.js',
     'public/_scripts/site.js'

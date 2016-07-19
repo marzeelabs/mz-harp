@@ -1,3 +1,4 @@
+var _           = require('lodash');
 var gulp        = require('gulp');
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
@@ -7,11 +8,13 @@ var harpConfig  = require('./harp.json');
 var jimp        = require('gulp-jimp');
 var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
+var runSequence = require('run-sequence');
+
 
 /**
  * Serve the Harp Site
  */
-gulp.task('serve', function (done) {
+gulp.task('serve', ['build'], function () {
   harp.server('.', {
     port: 3330
   }, function () {
@@ -27,20 +30,28 @@ gulp.task('serve', function (done) {
      * Watch for scss changes, tell BrowserSync to refresh main.css
      */
     gulp.watch(["public/**/*.scss"], function () {
-      reload("www/css/app.css", {stream: true});
+      reload("public/css/app.css", {stream: true});
       cp.exec('harp compile . www', {stdio: 'inherit'});
     });
-    /**
-     * Watch for JS changes
-     */
-    gulp.watch(["public/js/*.js", "!public/js/*.min.js"], ['build']);
+
     /**
      * Watch for image changes
      */
-    gulp.watch(["_posts-images/*"], ['jimp']);
+    gulp.watch(["public/_posts-images/*"], ['jimp']);
     gulp.watch(["public/images/**/*"], function () {
       reload();
+      cp.exec('harp compile . www', {stdio: 'inherit'});
     });
+
+    /**
+     * Watch for JS changes
+     */
+    gulp.watch(["public/_scripts/*.js"], ['uglify']);
+    gulp.watch(["public/js/**/*"], function () {
+      reload();
+      cp.exec('harp compile . www', {stdio: 'inherit'});
+    });
+
     /**
      * Watch for all other changes, reload the whole page
      */
@@ -51,77 +62,113 @@ gulp.task('serve', function (done) {
   });
 });
 
+
+/**
+ * Serve the Harp Site in production
+ */
+gulp.task('serveprod', ['build'], function() {
+  harp.server('.', {
+    port: process.env.PORT || 5000
+  }, function () {
+  });
+});
+
+
 /**
  * Build the Harp Site
  */
-gulp.task('build', ['jimp', 'uglify'], function (done) {
-  cp.exec('harp compile . www', {stdio: 'inherit'})
-    .on('close', done);
+gulp.task('build', ['jimp', 'uglify'], function () {
+  return cp.exec('harp compile . www', {stdio: 'inherit'})
+});
+
+
+// Jimp variables
+var imgSrc          = 'public/_posts-images/*',
+    imgDest         = 'public/images/posts/',
+    imgQuality      = 80,
+    largeWidth      = harpConfig.globals.breakpoints.large,
+    regularWidth    = harpConfig.globals.breakpoints.regular,
+    mediumWidth     = harpConfig.globals.breakpoints.medium,
+    smallWidth      = harpConfig.globals.breakpoints.small
+
+// Clean the image folder
+gulp.task('jimp-clean', function() {
+  return cp.exec('rm ' + imgDest + '*', {stdio: 'inherit'});
+});
+
+// Copy original image
+gulp.task('jimp-original', function() {
+  return gulp.src(imgSrc).pipe(gulp.dest(imgDest));
+});
+
+// Create large image
+gulp.task('jimp-large', function() {
+  return gulp.src(imgSrc).pipe(jimp({
+    '-large': {
+      resize: { width: largeWidth, height: jimp.AUTO },
+      quality: imgQuality
+    }
+  })).pipe(gulp.dest(imgDest));
+});
+
+// Create Regular image
+gulp.task('jimp-regular', function() {
+  // Regular image
+  return gulp.src(imgSrc).pipe(jimp({
+    '-regular': {
+      resize: { width: regularWidth, height: jimp.AUTO },
+      quality: imgQuality
+    }
+  })).pipe(gulp.dest(imgDest));
+});
+
+// Create Medium image
+gulp.task('jimp-medium', function() {
+  return gulp.src(imgSrc).pipe(jimp({
+    '-medium': {
+      resize: { width: mediumWidth, height: jimp.AUTO },
+      quality: imgQuality
+    }
+  })).pipe(gulp.dest(imgDest));
+});
+
+// Create Small image
+gulp.task('jimp-small', function() {
+  return gulp.src(imgSrc).pipe(jimp({
+    '-small': {
+      resize: { width: smallWidth, height: jimp.AUTO },
+      quality: imgQuality
+    }
+  })).pipe(gulp.dest(imgDest));
 });
 
 /**
  * Create responsive images with JIMP
  *
- * We divide this into several tasks
- * so we don't get re-compression artifacts
+ * We divide this into several tasks so we can have a callback
+ * and make sure 'build' runs after it's finished.
  */
-gulp.task('jimp', function (done) {
-    var imgSrc       = '_posts-images/*',
-        imgDest      = 'public/images/posts/',
-        imgQuality   = 80,
-        largeWidth   = harpConfig.globals.breakpoints.large,
-        regularWidth = harpConfig.globals.breakpoints.regular,
-        mediumWidth  = harpConfig.globals.breakpoints.medium,
-        smallWidth   = harpConfig.globals.breakpoints.small;
-
-    // Clean destination dir
-    cp.exec('rm ' + imgDest + '*', {stdio: 'inherit'});
-
-    // Original image
-    gulp.src(imgSrc)
-      .pipe(gulp.dest(imgDest));
-
-    // Large image
-    gulp.src(imgSrc).pipe(jimp({
-        '-large': {
-            resize: { width: largeWidth, height: jimp.AUTO },
-            quality: imgQuality
-        }
-    })).pipe(gulp.dest(imgDest));
-
-    // Regular image
-    gulp.src(imgSrc).pipe(jimp({
-        '-regular': {
-            resize: { width: regularWidth, height: jimp.AUTO },
-            quality: imgQuality
-        }
-    })).pipe(gulp.dest(imgDest));
-
-    // Medium image
-    gulp.src(imgSrc).pipe(jimp({
-        '-medium': {
-            resize: { width: mediumWidth, height: jimp.AUTO },
-            quality: imgQuality
-        }
-    })).pipe(gulp.dest(imgDest));
-
-    // Small image
-    gulp.src(imgSrc).pipe(jimp({
-        '-small': {
-            resize: { width: smallWidth, height: jimp.AUTO },
-            quality: imgQuality
-        }
-    })).pipe(gulp.dest(imgDest)).on('end', done);
+gulp.task('jimp', function (callback) {
+  runSequence(
+    'jimp-clean',
+    ['jimp-original','jimp-large', 'jimp-regular', 'jimp-medium', 'jimp-small'],
+    callback
+  );
 });
 
-gulp.task('uglify', function (done) {
-    // gulp.src(['public/jquery/jquery-1.10.2.min.js', 'public/js/site.js']).pipe(concat('site.min.js')).pipe(uglify()).pipe(gulp.dest('public/js'));
-    // gulp.src(['public/jquery/jquery.color.min.js', 'public/js/paper-full.min.js']).pipe(concat('home.min.js')).pipe(gulp.dest('public/js'));
-    // gulp.src(['public/js/mzwaves.js']).pipe(concat('mzwaves.min.js')).pipe(uglify()).pipe(gulp.dest('public/js')).on('end', done);
+/**
+ * Concatenate JS files
+ */
+gulp.task('uglify', function () {
+  return gulp.src([
+    'public/_scripts/jquery-1.10.2.min.js',
+    'public/_scripts/site.js'
+  ]).pipe(concat('site.min.js')).pipe(uglify()).pipe(gulp.dest('public/js'));
 });
 
 /**
  * Default task, running `gulp` will fire up the Harp site,
  * launch BrowserSync & watch files.
  */
-gulp.task('default', ['build', 'serve']);
+gulp.task('default', ['serve']);
+

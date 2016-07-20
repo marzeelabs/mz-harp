@@ -77,7 +77,7 @@ gulp.task('serveprod', ['build'], function() {
  * Build the Harp Site
  */
 gulp.task('build', ['copy-css-assets', 'jimp', 'uglify'], function () {
-  return cp.exec('harp compile . www', {stdio: 'inherit'})
+  return cp.exec('harp compile . www', {stdio: 'inherit'});
 });
 
 
@@ -88,7 +88,7 @@ var imgSrc          = 'public/_posts-images/*',
     largeWidth      = harpConfig.globals.breakpoints.large,
     regularWidth    = harpConfig.globals.breakpoints.regular,
     mediumWidth     = harpConfig.globals.breakpoints.medium,
-    smallWidth      = harpConfig.globals.breakpoints.small
+    smallWidth      = harpConfig.globals.breakpoints.small;
 
 // Clean the image folder
 gulp.task('jimp-clean', function() {

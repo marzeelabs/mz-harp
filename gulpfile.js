@@ -1,13 +1,13 @@
-var gulp        = require('gulp');
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
-var cp          = require('child_process');
-var harp        = require('harp');
-var harpConfig  = require('./harp.json');
-var jimp        = require('gulp-jimp');
-var concat      = require('gulp-concat');
-var uglify      = require('gulp-uglify');
-var runSequence = require('run-sequence');
+var gulp = require('gulp'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload,
+    cp = require('child_process'),
+    harp = require('harp'),
+    harpConfig = require('./harp.json'),
+    jimp = require('gulp-jimp'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    runSequence = require('run-sequence');
 
 
 /**

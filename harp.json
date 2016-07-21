@@ -1,9 +1,7 @@
 {
   "globals": {
-    "title": "Marzee Labs",
+    "title": "MZ Harp",
     "tagline": "Boilerplate for static Harp",
-    "twitter": "marzeelabs",
-    "production_url": "http://marzeelabs.org",
     "disqus": false,
     "analytics": false,
     "breakpoints": {

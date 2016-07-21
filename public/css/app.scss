@@ -20,5 +20,11 @@
 // Helps with long texts in small spaces.
 @import '../../node_modules/compass-mixins/lib/compass/typography/text/ellipsis';
 
-// Marzee Labs files
+//Normalize
+@import "normalize";
+
+// Base styles
+@import "base";
+
+// MZ Harp files
 @import "components/layout";

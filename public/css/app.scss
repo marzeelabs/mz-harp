@@ -1,10 +1,10 @@
-// Init file
-@import "init";
+// Init file to import sass vendors
+@import "init/init";
 
 //Normalize
-@import "normalize";
+@import "base/normalize";
 
 // Base styles
-@import "base";
+@import "base/base";
 
 

@@ -28,5 +28,8 @@
     "cover-img": "/images/posts/night-sky.jpg",
     "date": "2016-05-23",
     "published": true
+  },
+  "index": {
+    "layout": "../_layout"
   }
 }

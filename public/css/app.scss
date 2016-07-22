@@ -4,7 +4,14 @@
 //Normalize
 @import "base/normalize";
 
+// Layout styles
+@import "base/layout";
+
 // Base styles
 @import "base/base";
 
-
+// MZ Harp styles
+// Replace by yours
+@import
+  "components/navigation",
+  "components/intro-section";

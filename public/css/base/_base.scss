@@ -1,1 +1,19 @@
 /* Insert here the base styles */
+
+p, h1, h2, h3, h4, h5, h6, a, ul {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+p {
+  @include adjust-leading-to(4);
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

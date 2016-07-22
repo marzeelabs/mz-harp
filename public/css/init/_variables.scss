@@ -41,11 +41,15 @@ $palettes: (
     base: rgb(0, 0, 0) // #000 palette(black)
   ),
   grey: (
-    xxx-light: rgb(249, 249, 249), // #F9F9F9 palette(grey, xxx-light)
-    xx-light: rgb(210, 210, 210), // #d2d2d2 palette(grey, xx-light)
     x-light: rgb(149, 149, 149), // #959595 palette(grey, x-light)
     base: rgb(210, 210, 210), // #c5ccd1 palette(grey)
     mid-dark: rgb(51, 51, 51) // #333333 palette(grey, mid-dark)
+  ),
+  mzharp: (
+    base: rgb(0, 237, 219), // 00EDDB palette(mzharp)
+    mid-dark: rgb(0, 186, 172), // #00BAAC palette(mzharp, mid-dark)
+    dark: rgb(0, 128, 118), // #008076 palette(mzharp, dark)
+    x-dark: rgb(0, 90, 83) // #005A53 palette(mzharp, x-dark)
   ),
   white: (
     base: rgb(255, 255, 255) // #fff palette(white)
@@ -56,13 +60,15 @@ $palettes: (
 //
 // Breakpoints
 //
-$break-extra-small: 400px;
-$break-small: 480px;
-$break-medium-small: 600px;
-$break-medium: 730px;
-$break-large: 980px;
-$break-big: 1200px;
 
+$mq-breakpoints: (
+  break-extra-small: 400px,
+  break-small: 480px,
+  break-medium-small: 600px,
+  break-medium: 730px,
+  break-large: 980px,
+  break-big: 1200px
+);
 
 //
 // Grids

@@ -1,0 +1,71 @@
+.blog-activity__wrapper {
+  width: auto;
+  margin-bottom: 20px;
+  padding: 55px 20px 10px 20px;
+  background: url(../images/home/waves.svg) top left repeat-x palette(white);
+  text-align: center;
+
+  @include mq($from: break-medium) {
+    padding: 110px 20px 10px 20px;
+  }
+}
+
+.blog-activity__title {
+  font-weight: 300;
+  text-transform: uppercase;
+  color: palette(mzharp, mid-dark);
+  margin-bottom: 60px;
+
+  @include mq($until: break-medium) {
+    @include adjust-font-size-to(18px)
+    margin-bottom: 30px;
+  }
+}
+
+.blog-activity {
+  text-align: left;
+  @include container(650px);
+}
+
+.blog-activity__list-item {
+  margin-bottom: 40px;
+
+  &:first-child {
+    border-bottom: 1px solid palette(grey);
+    margin-bottom: 20px;
+  }
+}
+
+.blog-activity__post {
+  color: palette(black);
+}
+
+.blog-activity__post-date {
+  @include adjust-font-size-to(12px)
+}
+
+.blog-activity__post-title {
+  @include adjust-font-size-to(18px)
+  color: palette(mzharp, mid-dark);
+  font-weight: 300;
+  text-transform: uppercase;
+
+  @include mq($from: break-medium) {
+    @include adjust-font-size-to(24px)
+  }
+}
+
+.blog-activity__button-more {
+  color: palette(white);
+  text-transform: uppercase;
+  padding: 10px 16px;
+  background: palette(mzharp, mid-dark);
+  transition: background 0.3s ease;
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px palette(mzharp, x-dark);
+
+  &:hover {
+    background: palette(mzharp, dark);
+    box-shadow: inset 0 0 10px palette(mzharp, x-dark);
+  }
+}

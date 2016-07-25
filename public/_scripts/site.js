@@ -21,7 +21,7 @@ $(function() {
       // Force close mobile navigation when clicking anywhere (except the toggle button itself)
       $( document ).on('mousedown touchstart', function(event) {
         if (!$(event.target).closest(".navigation__mobile-menu__toggle").length) {
-          $(".navigation.is-open").removeClass('is-open');
+         // $(".navigation.is-open").removeClass('is-open');
         }
       });
 

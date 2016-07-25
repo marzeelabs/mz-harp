@@ -1,0 +1,16 @@
+// Navigation styles
+.blog {
+  width: auto;
+  padding: 20px;
+  position: relative;
+  margin-top: 60px;
+}
+
+.blog__item {
+  border-bottom: 1px solid palette(grey, x-light);
+  padding-bottom: 30px;
+}
+
+.blog__item-title a {
+  color: palette(mzharp, mid-dark);
+}

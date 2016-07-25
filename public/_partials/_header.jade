@@ -1,14 +1,18 @@
 header
-  nav.navigation__wrapper
-    div(class='navigation')
+
+  .navigation
 
       .navigation__mobile-menu__toggle
+
         span.navigation__mobile-menu__icon
 
-      ul.navigation__mobile-menu
+      ul.navigation__menu
 
-        li.navigation__item(class="#{ current.path[0] == 'index' ? 'is-active' : '' }")
+        li.navigation__menu__item(class="#{ current.path[0] == 'index' ? 'is-active' : '' }")
           a(href='/') Home
 
-        li.navigation__item(class="#{ current.path[1] == 'index' ? 'is-active' : '' }")
+        li.navigation__menu__item(class="#{ current.path[0] == 'blog' ? 'is-active' : '' }")
           a(href='/blog') Blog
+
+        li.navigation__menu__item
+          a(href='#' target='_blank') Github

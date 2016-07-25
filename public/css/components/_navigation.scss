@@ -1,37 +1,54 @@
 // Navigation styles
 .navigation {
   width: 100%;
-  max-height: 60px;
-  padding: 10px 0;
+  max-height: rhythm(10);
   text-align: center;
+  text-transform: uppercase;
   position: relative;
-  background-color: palette(mzharp);
+  background-color: palette(mzharp, dark);
 
-  &.navigation--fixed-top {
-    background-color: palette(mzharp, dark);
-    transition: background ease 0.3s;
+  a {
+    @include adjust-font-size-to(rhythm(3));
+    color: palette(white);
+    padding: rhythm(4) 0;
+    display: block;
 
     @include mq($from: break-medium) {
+      padding: rhythm() 16px;
+      transition: background 0.3s ease;
+      border-radius: 20px;
+      @include adjust-font-size-to(rhythm(2));
+    }
 
-      a {
-        padding: 8px 16px;
-        transition: background 0.3s ease;
-        border-radius: 15px;
+    &:hover {
+      background: palette(mzharp);
 
-        &:hover {
-          background: palette(mzharp);
-        }
-      }
-
-      .is-active a {
-        color: palette(mzharp, x-dark);
+      @include mq($from: break-medium) {
         background: palette(mzharp);
-        font-weight: 400;
       }
     }
   }
 
-  @include mq($until: break-medium) {
+  .is-active a {
+    font-weight: 700;
+    color: palette(mzharp);
+
+    &:hover {
+      color: palette(white);
+    }
+
+    @include mq($from: break-medium) {
+      color: palette(mzharp, x-dark);
+      background: palette(mzharp);
+    }
+  }
+
+  &.navigation--fixed-top {
+    background-color: palette(mzharp, x-dark);
+    transition: background ease 0.3s;
+  }
+
+    @include mq($until: break-medium) {
     position: fixed;
     text-align: left;
     top: 0;
@@ -45,30 +62,37 @@
     top: 0;
     left: 0;
     z-index: 9999;
-    max-height: 120px;
-    background: transparent;
+    max-height: rhythm(20);
   }
 }
 
-.navigation__mobile-menu {
+.navigation__menu {
+
   @include mq($until: break-medium) {
     max-height: 0;
     text-align: center;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
 
     .is-open & {
-      max-height: 800px;
+      max-height: rhythm(134);
     }
+  }
+
+  @include mq($from: break-medium) {
+    padding-right: 5px;
+    float: right;
   }
 }
 
 .navigation__mobile-menu__icon {
   display: block;
   position: absolute;
-  top: 30px;
+  top: rhythm(5);
   right: 10px;
   width: 30px;
-  height: 3px;
+  height: rhythm()/2;
   background-color: palette(white);
 
   &:before, &:after {
@@ -77,16 +101,16 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: rhythm()/2;
     background-color: palette(white);
   }
 
   &:before {
-    top: -10px;
+    top: - rhythm(1.5);
   }
 
   &:after {
-    bottom: -10px;
+    bottom: - rhythm(1.5);
   }
 
   .is-open & {
@@ -109,7 +133,7 @@
   position: relative;
   overflow: hidden;
   margin: 0;
-  height: 60px;
+  height: rhythm(10);
   cursor: pointer;
   margin-left: 55px;
 
@@ -118,40 +142,15 @@
   }
 }
 
-.navigation__item {
-  display: inline-block;
-  margin: 0 0.5em;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-
-  a {
-    height: 100%;
-    width: 100%;
-    color: palette(white);
-
-    &:hover {
-      color: palette(mzharp);
-    }
-
-  }
-
-  @include mq($until: break-medium) {
-    display: block;
-    background-color: palette(black);
-    width: auto;
-  }
+.navigation__menu__item {
+  display: block;
+  background-color: palette(mzharp, x-dark);
+  width: auto;
 
   @include mq($from: break-medium) {
-      padding: 10px 20px;
-  }
-
-  @include mq($from: break-large) {
-      padding: 10px 30px;
+    display: inline-block;
+    margin: 0 0.5em;
+    text-transform: uppercase;
+    background-color: transparent;
   }
 }
-
-.is-active a {
-  color: palette(mzharp);
-}
-
-

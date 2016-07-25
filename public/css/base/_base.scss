@@ -1,12 +1,13 @@
 /* Insert here the base styles */
 
+@include establish-baseline();
+
 p, h1, h2, h3, h4, h5, h6, a, ul {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.1em;
 }
 
 p {
-  @include adjust-leading-to(4);
   font-weight: 400;
 }
 
@@ -21,4 +22,17 @@ a {
 
 ul, li {
   list-style-type: none;
+}
+
+
+.section-title {
+  font-weight: 300;
+  text-transform: uppercase;
+  color: palette(mzharp, mid-dark);
+  margin-bottom: rhythm(10);
+
+  @include mq($until: break-medium) {
+    @include adjust-font-size-to(rhythm(3))
+    margin-bottom: rhythm(5);
+  }
 }

@@ -9,8 +9,7 @@
 @import "../../../node_modules/sass-mq/mq";
 
 // Ritmo vertical rhythm
-// @todo target node_modules folder once ritmo package is published
-@import "../vendors/ritmo/ritmo";
+@import "../../../node_modules/ritmo/ritmo";
 
 //
 // Custom sass files

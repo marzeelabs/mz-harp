@@ -13,7 +13,7 @@ var gulp = require('gulp'),
 /**
  * Serve the Harp Site
  */
-gulp.task('serve', ['build'], function () {
+gulp.task('serve', ['fast-build'], function () {
   harp.server('.', {
     port: 3330
   }, function () {
@@ -77,6 +77,13 @@ gulp.task('serveprod', ['build'], function() {
  * Build the Harp Site
  */
 gulp.task('build', ['copy-css-assets', 'jimp', 'uglify'], function () {
+  return cp.exec('harp compile . www', {stdio: 'inherit'});
+});
+
+/**
+ * Build the Harp Site without jimp
+ */
+gulp.task('fast-build', ['copy-css-assets', 'uglify'], function () {
   return cp.exec('harp compile . www', {stdio: 'inherit'});
 });
 

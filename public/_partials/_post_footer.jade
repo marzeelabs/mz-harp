@@ -11,5 +11,5 @@
     .post-footer__tags
       each postTag, postTagIndex in postFooterTags
         if (postTagIndex > 0)
-          |,&nbsp;
+          | &nbsp;
         span(href="##{postTag}")!= postTag

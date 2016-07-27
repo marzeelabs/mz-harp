@@ -1,12 +1,9 @@
 .intro-section {
-  width: auto;
+  @extend .section-green-commons;
   padding: rhythm(12) 20px rhythm(2) 20px;
-  background: palette(mzharp, mid-dark);
-  text-align: center;
-  color: palette(white);
 
   @include mq($from: break-medium) {
-    padding: rhythm(10) 20px rhythm(2) 20px;
+    padding: rhythm(14) 20px rhythm(2) 20px;
   }
 }
 
@@ -37,7 +34,7 @@
 
     &:first-child {
       text-align: right;
-      padding-top: rhythm(10);
+      padding-top: rhythm(2);
       height: 300px;
     }
   }
@@ -79,7 +76,7 @@
 
   img {
     height: rhythm(4);
-    transform: translateY(rhythm()/2);
+    transform: translateY(- rhythm()/2);
     padding-left: 8px;
   }
 }

@@ -10,6 +10,7 @@
 html {
   font-family: $base-font-family; /* 1 */
   letter-spacing: 0.1em;
+  background: palette(mzharp, mid-dark);
 }
 
 @include establish-baseline();
@@ -105,13 +106,21 @@ ul, li {
 
 
 .section-title {
-  font-weight: 300;
-  text-transform: uppercase;
-  color: palette(mzharp, mid-dark);
-  margin-bottom: rhythm(10);
 
   @include mq($until: break-medium) {
     @include adjust-font-size-to(rhythm(3))
     margin-bottom: rhythm(5);
   }
+
+  font-weight: 300;
+  text-transform: uppercase;
+  color: palette(mzharp, mid-dark);
+  margin-bottom: rhythm(10);
+}
+
+.section-green-commons {
+  width: auto;
+  background: palette(mzharp, mid-dark);
+  text-align: center;
+  color: palette(white);
 }

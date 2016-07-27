@@ -1,4 +1,4 @@
-ul.pager
+ul.post-pager
   include _latest_posts
   - var currentPostIndex;
   each latestPost, latestPostIndex in latestPosts
@@ -7,12 +7,11 @@ ul.pager
   if currentPostIndex < latestPosts.length - 1
     - var previousLatestPost = latestPosts[currentPostIndex + 1];
     li.previous
-      a(href="/blog/#{ previousLatestPost.slug }", title="Previous post")
-        span.icon-arrow-left
+      a(href="/blog/#{ previousLatestPost.slug }", title="Previous post") &#8249;
         != previousLatestPost.title
   if currentPostIndex > 0
     - var nextLatestPost = latestPosts[currentPostIndex - 1];
     li.next
-      a(href="/blog/#{ nextLatestPost.slug }", title="Next post")
+      a(href="/blog/#{ nextLatestPost.slug }", title="Next post")  &#8249;
         != nextLatestPost.title
-        span.icon-arrow-right
+

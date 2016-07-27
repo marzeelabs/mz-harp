@@ -1,16 +1,43 @@
-// Navigation styles
 .blog {
+  background: palette(white);
   width: auto;
-  padding: 20px;
-  position: relative;
-  margin-top: 60px;
+  padding: rhythm(8);
+  margin-top: rhythm(10);
+
+  .section-title {
+    margin-bottom: 0;
+    color: palette(black);
+    @include container(1000px);
+  }
 }
 
 .blog__item {
   border-bottom: 1px solid palette(grey, x-light);
-  padding-bottom: 30px;
+  padding-bottom: rhythm(5);
+  margin: rhythm(4) auto;
+  @include container(1000px);
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  @include mq($from: break-medium) {
+    padding-bottom: rhythm(10);
+    margin: rhythm(5) auto;
+  }
 }
 
 .blog__item-title a {
   color: palette(mzharp, mid-dark);
+  font-weight: 300;
+  @include adjust-font-size-to(rhythm(4));
+  text-transform: uppercase;
+}
+
+.blog__item-description {
+
+  @include mq($until: break-medium) {
+    @include adjust-font-size-to(1px);
+  }
 }

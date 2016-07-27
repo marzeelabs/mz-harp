@@ -1,12 +1,11 @@
 .blog-activity__wrapper {
   width: auto;
-  margin-bottom: rhythm(5);
-  padding: rhythm(10) 20px rhythm(2) 20px;
+  padding: rhythm(10) 20px rhythm(10) 20px;
   background: url(../images/home/waves.svg) top left repeat-x palette(white);
   text-align: center;
 
   @include mq($from: break-medium) {
-    padding: rhythm(18) 20px rhythm(2) 20px;
+    padding-top: rhythm(18);
   }
 }
 
@@ -40,6 +39,13 @@
 
   @include mq($from: break-medium) {
     @include adjust-font-size-to(rhythm(4))
+  }
+}
+
+.blog-activity__post-description {
+
+  @include mq($until: break-medium) {
+    @include adjust-font-size-to(14px)
   }
 }
 

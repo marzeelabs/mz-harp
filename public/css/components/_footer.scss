@@ -1,0 +1,21 @@
+.footer {
+  @extend .section-green-commons;
+  padding: rhythm(6) 20px rhythm(2) 20px;
+
+  p {
+
+    @include mq($until: break-medium-small) {
+      @include adjust-font-size-to(14px);
+    }
+  }
+
+  a {
+    font-weight: 700;
+    color: white;
+    transition: background ease 0.5s;
+
+    &:hover {
+      background: palette(mzharp, dark);
+    }
+  }
+}

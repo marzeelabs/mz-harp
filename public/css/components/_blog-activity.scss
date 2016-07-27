@@ -1,11 +1,11 @@
 .blog-activity__wrapper {
   width: auto;
-  padding: rhythm(10) 20px rhythm(10) 20px;
+  padding: ritmo(10) 20px ritmo(10) 20px;
   background: url(../images/home/waves.svg) top left repeat-x palette(white);
   text-align: center;
 
   @include mq($from: break-medium) {
-    padding-top: rhythm(18);
+    padding-top: ritmo(18);
   }
 }
 
@@ -15,11 +15,11 @@
 }
 
 .blog-activity__list-item {
-  margin-bottom: rhythm(8);
+  margin-bottom: ritmo(8);
 
   &:first-child {
     border-bottom: 1px solid palette(grey);
-    margin-bottom: rhythm(4);
+    margin-bottom: ritmo(4);
   }
 }
 
@@ -28,31 +28,31 @@
 }
 
 .blog-activity__post-date {
-  @include adjust-font-size-to(rhythm(2))
+  @include ritmo-font-size(ritmo(2))
 }
 
 .blog-activity__post-title {
-  @include adjust-font-size-to(rhythm(3))
+  @include ritmo-font-size(ritmo(3))
   color: palette(mzharp, mid-dark);
   font-weight: 300;
   text-transform: uppercase;
 
   @include mq($from: break-medium) {
-    @include adjust-font-size-to(rhythm(4))
+    @include ritmo-font-size(ritmo(4))
   }
 }
 
 .blog-activity__post-description {
 
   @include mq($until: break-medium) {
-    @include adjust-font-size-to(14px)
+    @include ritmo-font-size(14px)
   }
 }
 
 .blog-activity__button-more {
   color: palette(white);
   text-transform: uppercase;
-  padding: rhythm(2) 18px;
+  padding: ritmo(2) 18px;
   background: palette(mzharp, mid-dark);
   transition: background 0.3s ease;
   border-radius: 24px;

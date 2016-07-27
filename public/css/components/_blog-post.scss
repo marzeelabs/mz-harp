@@ -1,12 +1,12 @@
 .blog-post {
   background: palette(white);
   width: auto;
-  margin-top: rhythm(10);
+  margin-top: ritmo(10);
 }
 
 .blog-post__cover {
-  height: rhythm(60);
-  padding-top: rhythm(20);
+  height: ritmo(60);
+  padding-top: ritmo(20);
 }
 
 .blog-post__title, .blog-post__subtitle {
@@ -18,19 +18,19 @@
 
 
 .blog-post__content-wrapper {
-  padding: rhythm(10);
+  padding: ritmo(10);
   @include container(1000px);
 
   img {
     display: block;
-    margin: rhythm(3) auto;
+    margin: ritmo(3) auto;
   }
 
   pre {
     overflow-x: scroll;
     width: 100%;
     background: palette(grey, xx-light);
-    padding: rhythm();
+    padding: ritmo();
   }
 
   // @todo organize these components in another file

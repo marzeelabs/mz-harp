@@ -32,4 +32,28 @@
     background: palette(grey, xx-light);
     padding: rhythm();
   }
+
+  // @todo organize these components in another file
+  .image-left {
+    @include mq($from: break-large) {
+      float: left;
+      width: 46%;
+      margin-right: 4%;
+    }
+  }
+
+  .image-right {
+    @include mq($from: break-large) {
+      float: right;
+      width: 46%;
+      margin-left: 4%;
+    }
+  }
+
+  .non-responsive {
+    @include mq($from: break-large) {
+      display: block;
+      margin: 0 auto;
+    }
+  }
 }

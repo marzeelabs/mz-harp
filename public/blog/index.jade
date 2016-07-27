@@ -4,11 +4,14 @@
 - }
 
 .blog
-  include ../_partials/_latest_posts.jade
+
+  h3.section-title Welcome to the blog
+
+  include ../_partials/_latest_posts
   each post in latestPosts
     //- Get the author of the post
     .blog__item
-      h2.blog__item-title: a(href="/posts/#{ post.slug }")= post.title
+      h2.blog__item-title: a(href="/blog/#{ post.slug }")= post.title
       p.blog__item-description!= excerpt(partial(post.slug + '.md'))
       - var postFooterDate = post.date;
       - var postFooterImage = true;

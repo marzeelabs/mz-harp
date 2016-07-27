@@ -4,8 +4,8 @@ block page_content
 
   .blog-post
 
-    if public.posts._data.posts[current.source]['cover-img']
-      - var coverFilename = public.posts._data.posts[current.source]['cover-img'].split('.');
+    if public.blog._data[current.source]['cover-img']
+      - var coverFilename = public.blog._data[current.source]['cover-img'].split('.');
       - var coverExtension = coverFilename.pop();
       - coverFilename.join('.');
 
@@ -43,9 +43,9 @@ block page_content
 
 
 
-    .blog-post__cover(class='#{public.posts._data.posts[current.source].darkTitles === true ? "blog-post__cover--dark" : ""}')
-      h1.blog-post__title #{public.posts._data.posts[current.source].title}
-      h3.blog-post__subtitle #{public.posts._data.posts[current.source].subtitle}
+    .blog-post__cover(class='#{public.blog._data[current.source].darkTitles === true ? "blog-post__cover--dark" : ""}')
+      h1.blog-post__title #{public.blog._data[current.source].title}
+      h3.blog-post__subtitle #{public.blog._data[current.source].subtitle}
 
     .blog-post__content-wrapper.blog-post__section.section-inner
       .blog-post__content
@@ -53,15 +53,14 @@ block page_content
         include ../_partials/_post_responsive-images
         != yield
 
-        //- .blog-post__post-footer-wrapper
-        //-   - var member = members.filter(function (m){return m.username == public.blog._data.posts[current.source].author})[0];
-        //-   - var postFooterDate = public.blog._data.posts[current.source].date;
-        //-   - var postFooterTags = public.blog._data.posts[current.source].tags;
-        //-   include ../_partials/_post_footer
+        .blog-post__post-footer-wrapper
+          - var postFooterDate = public.blog._data[current.source].date;
+          - var postFooterTags = public.blog._data[current.source].tags;
+          include ../_partials/_post_footer
 
       ul.blog-post__share-buttons
         li
-          a(href="https://twitter.com/intent/tweet?via=marzeelabs&url=#{encodeURIComponent(production_url + '/' + current.path.join('/'))}", target="_blank")
+          a(href="https://twitter.com/intent/tweet?url=#{encodeURIComponent(production_url + '/' + current.path.join('/'))}", target="_blank")
             span.icon-twitter
         li
           a(href="https://www.linkedin.com/shareArticle?url=#{encodeURIComponent(production_url + '/' + current.path.join('/'))}", target="_blank")
@@ -70,23 +69,7 @@ block page_content
           a(href="https://www.facebook.com/sharer/sharer.php?u=#{encodeURIComponent(production_url + '/' + current.path.join('/'))}", target="_blank")
             span.icon-facebook
 
-    //- .blog-post__disqus-wrapper.blog-post__section
-    //-   .section-inner
-    //-     .blog-post__disqus
-    //-       include ../_partials/_disqus
-
-    //- .blog-post__author-wrapper.blog-post__section
-    //-   .section-inner
-    //-     .blog-post__author
-    //-       - var member = members.filter(function (m){return m.username == public.blog._data.posts[current.source].author})[0];
-    //-       include ../_partials/_site_member
-
-  //- .blog-post__mailchimp-wrapper.blog-post__section
-  //-   .section-inner
-  //-     .blog-post__mailchimp
-  //-       include ../_partials/_mailchimp
-
-  //- .pager-wrapper
-    //- include ../_partials/_post_pager
+    .post-pager__wrapper
+      include ../_partials/_post_pager
 
   include ../_partials/_footer

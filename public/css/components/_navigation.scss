@@ -1,50 +1,50 @@
 // Navigation styles
 .navigation {
   width: 100%;
-  max-height: rhythm(10);
+  max-height: ritmo(10);
   text-align: center;
   text-transform: uppercase;
   position: relative;
-  background-color: palette(mzharp, dark);
+  background-color: palette(blue, dark);
 
   a {
-    @include adjust-font-size-to(rhythm(3));
+    @include ritmo-font-size(ritmo(3));
     color: palette(white);
-    padding: rhythm(4) 0;
+    padding: ritmo(4) 0;
     display: block;
 
-    @include mq($from: break-medium) {
-      padding: rhythm() 16px;
+    @include mq($from: break-large) {
+      padding: ritmo() 16px;
       transition: background 0.3s ease;
       border-radius: 20px;
-      @include adjust-font-size-to(rhythm(2));
+      @include ritmo-font-size(ritmo(2));
     }
 
     &:hover {
-      background: palette(mzharp);
+      background: palette(blue, light);
 
-      @include mq($from: break-medium) {
-        background: palette(mzharp);
+      @include mq($from: break-large) {
+        background: palette(blue, light);
       }
     }
   }
 
   .is-active a {
     font-weight: 700;
-    color: palette(mzharp);
+    color: palette(blue, light);
 
     &:hover {
       color: palette(white);
     }
 
-    @include mq($from: break-medium) {
-      color: palette(mzharp, x-dark);
-      background: palette(mzharp);
+    @include mq($from: break-large) {
+      color: palette(white);
+      background: palette(blue, light);
     }
   }
 
   &.navigation--fixed-top {
-    background-color: palette(mzharp, x-dark);
+    background-color: palette(blue, x-dark);
     transition: background ease 0.3s;
   }
 
@@ -62,13 +62,13 @@
     top: 0;
     left: 0;
     z-index: 9999;
-    max-height: rhythm(20);
+    max-height: ritmo(20);
   }
 }
 
 .navigation__menu {
 
-  @include mq($until: break-medium) {
+  @include mq($until: break-large) {
     max-height: 0;
     text-align: center;
     overflow: hidden;
@@ -76,23 +76,18 @@
     margin: 0;
 
     .is-open & {
-      max-height: rhythm(134);
+      max-height: ritmo(134);
     }
-  }
-
-  @include mq($from: break-medium) {
-    padding-right: 5px;
-    float: right;
   }
 }
 
 .navigation__mobile-menu__icon {
   display: block;
   position: absolute;
-  top: rhythm(5);
+  top: ritmo(5);
   right: 10px;
   width: 30px;
-  height: rhythm()/2;
+  height: ritmo()/2;
   background-color: palette(white);
 
   &:before, &:after {
@@ -101,16 +96,16 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: rhythm()/2;
+    height: ritmo()/2;
     background-color: palette(white);
   }
 
   &:before {
-    top: - rhythm(1.5);
+    top: - ritmo(1.5);
   }
 
   &:after {
-    bottom: - rhythm(1.5);
+    bottom: - ritmo(1.5);
   }
 
   .is-open & {
@@ -133,21 +128,21 @@
   position: relative;
   overflow: hidden;
   margin: 0;
-  height: rhythm(10);
+  height: ritmo(10);
   cursor: pointer;
   margin-left: 55px;
 
-  @include mq($from: break-medium) {
+  @include mq($from: break-large) {
     display: none;
   }
 }
 
 .navigation__menu__item {
   display: block;
-  background-color: palette(mzharp, x-dark);
+  background-color: palette(blue, x-dark);
   width: auto;
 
-  @include mq($from: break-medium) {
+  @include mq($from: break-large) {
     display: inline-block;
     margin: 0 0.5em;
     text-transform: uppercase;

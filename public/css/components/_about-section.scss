@@ -1,0 +1,19 @@
+#about-section {
+  @extend .section-commons;
+  background: palette(blue, dark);
+  color: palette(white);
+  padding: ritmo(10) 40px;
+
+  p {
+    @include container(1000px);
+    font-weight: 300;
+  }
+
+  .underlines {
+    background: palette(white);
+
+    &:after {
+      background: palette(white);
+    }
+  }
+}

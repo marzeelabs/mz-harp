@@ -9,14 +9,16 @@
 // Font faces, stacks and sizes
 //
 
-// Ritmo for vertical rhythm management is a powerful tool to set up a vertical
-// rhythm for your entire page.
+// Ritmo for vertical ritmo management is a powerful tool to set up a vertical
+// ritmo for your entire page.
 // @see https://github.com/marzeelabs/ritmo
-$base-font-size:   16px; // The font size set on the root html element.
-$base-line-height: 6px; // This line-height determines the basic unit of vertical rhythm.
+// @see _ritmo.scss for the defaults used.
+// $base-font-size:   16px; // The font size set on the root html element.
+// $base-line-unit: 5px; // This determines the unit of vertical ritmo.
+// $base-line-multi: 5; // The defines the multiplication factor of the unit
 
 // Font family
-$base-font-family: 'Roboto', sans-serif;
+$base-font-family: 'Open sans', sans-serif;
 $code-font-family: monospace;
 
 // Header font sizes
@@ -46,11 +48,16 @@ $palettes: (
     base: rgb(210, 210, 210), // #c5ccd1 palette(grey)
     mid-dark: rgb(51, 51, 51) // #333333 palette(grey, mid-dark)
   ),
-  mzharp: (
-    base: rgb(0, 237, 219), // 00EDDB palette(mzharp)
-    mid-dark: rgb(0, 186, 172), // #00BAAC palette(mzharp, mid-dark)
-    dark: rgb(0, 128, 118), // #008076 palette(mzharp, dark)
-    x-dark: rgb(0, 90, 83) // #005A53 palette(mzharp, x-dark)
+  green: (
+    base: rgb(0, 248, 128), // #00f880 palette(green)
+    dark: rgb(0, 85, 44) // #00552c palette(green, dark)
+  ),
+  blue: (
+    x-light: rgb(230, 240, 245), // #e6f0f5 palette(blue, x-light)
+    light: rgb(0, 148, 245), // #0194f5 palette(blue, light)
+    base: rgb(0, 112, 168), // #0070a8 palette(blue)
+    dark: rgb(0, 83, 131), // #005383 palette(blue, dark)
+    x-dark: rgb(0, 47, 78) // #002f4e palette(blue, x-dark)
   ),
   white: (
     base: rgb(255, 255, 255) // #fff palette(white)

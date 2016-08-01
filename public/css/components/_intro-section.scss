@@ -1,141 +1,82 @@
-#intro-section {
-  background: palette(white);
-  min-height: 1%;
-  overflow: hidden;
-  margin-top: 0;
+.intro-section {
+  @extend .section-green-commons;
+  padding: rhythm(12) 20px rhythm(2) 20px;
 
   @include mq($from: break-medium) {
-    margin-top: ritmo(4);
+    padding: rhythm(14) 20px rhythm(2) 20px;
   }
 }
 
-.intro-section__left {
-  padding-top: ritmo(20);
-  height: ritmo(72);
-  color: palette(blue, dark);
+.intro-section__list {
+  @include container(800px);
+  padding: 0;
+}
+
+.intro-section__list__item {
+  display: block;
   text-align: center;
-  @include span(6);
+  height: 140px;
+  width: 100%;
+  margin: 0;
+
+  &:first-child {
+    height: 200px;
+  }
 
   @include mq($from: break-medium) {
-    text-align: left;
-    @include span(isolate 3 at 1);
-  }
-
-  h5 {
-    @include ritmo-font-size(24px);
-    font-weight: 300;
-    text-transform: uppercase;
-    margin-bottom: ritmo(1);
-  }
-
-  h1 {
-    @include ritmo-font-size(55px);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0;
-
-    @include mq($from: break-small ) {
-      @include ritmo-font-size(35px);
-    }
-
-    @include mq($from: break-medium-small ) {
-      @include ritmo-font-size(65px);
-    }
-
-    @include mq($from: break-medium ) {
-      @include ritmo-font-size(35px);
-    }
-
-    @include mq($from: break-large) {
-      @include ritmo-font-size(45px);
-    }
-
-    @include mq($from: break-big) {
-      @include ritmo-font-size(55px);
-    }
-
-    @include mq($from: 1350px) {
-      @include ritmo-font-size(65px);
-    }
-  }
-
-  a {
+    height: 250px;
     display: inline-block;
-    margin: ritmo(3) auto;
-    padding: ritmo(2) 15px;
-    background: palette(green);
-    border-radius: 5px;
-    color: palette(white);
-    text-transform: uppercase;
-    @include ritmo-font-size(18px);
-    transition: background ease 0.2s;
-
-    &:hover {
-      background: palette(blue, light);
-    }
-  }
-}
-
-.intro-section__left-block1 {
-  @include span(6);
-
-  @include mq($from: break-small) {
-    @include span(isolate 3 at 1.5);
-  }
-
-  @include mq($from: break-medium) {
-     @include span(isolate 3 at 2);
-  }
-}
-
-.intro-section__left-block2 {
-  @include span(6);
-
-  @include mq($from: break-small) {
+    margin: 0 1.5em;
+    max-width: 290px;
+    padding: 0;
+    vertical-align: middle;
     text-align: left;
-    @include span(isolate 2 at 4.8);
-  }
 
-
-  @include mq($from: break-medium) {
-     @include span(isolate 3 at 5);
-  }
-
-  span {
-    display: block;
-    height: 1px;
-    background: palette(grey);
-    margin: ritmo(3) auto;
-    width: 130px;
-
-    @include mq($from: break-medium-small) {
-      margin: ritmo(3) auto ritmo(3) 0;
+    &:first-child {
+      text-align: right;
+      padding-top: rhythm(2);
+      height: 300px;
     }
   }
 
   p {
-    margin-bottom: ritmo(1);
-    color: palette(grey);
+    margin-bottom: rhythm(5);
   }
 }
 
+.intro-section__logo {
+  height: 90%;
+}
 
-.intro-section__right {
-  @include span(6);
-  margin-top: ritmo(25);
-  height: ritmo(50);
-  background: url(/images/home/img_drupal_aveiro_1.jpg)  20px bottom no-repeat transparent;
-  background-size: contain;
-
-  @include mq($from: break-small) {
-    margin-top: - ritmo(5);
-  }
+.intro-section__title {
+  display: none;
 
   @include mq($from: break-medium) {
-    background: url(/images/home/img_drupal_aveiro_1.jpg) 60px bottom no-repeat transparent;
-    background-size: cover;
-    margin-top: 0;
-    height: ritmo(72);
-    @include span(isolate 3 at 4);
+    display: block;
+    @include adjust-font-size-to(rhythm(5));
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: rhythm();
+  }
+}
+
+.intro-section__link {
+  color: palette(white);
+  @include adjust-font-size-to(rhythm(4), 2);
+  padding: rhythm(2) 14px rhythm(2) 16px;
+  background: palette(mzharp, dark);
+  transition: background 0.3s ease;
+  border-radius: 24px;
+  box-shadow: inset 0 0 10px palette(mzharp, x-dark);
+
+  &:hover {
+    background: palette(mzharp, x-dark);
+    box-shadow: inset 0 0 10px palette(black);
+  }
+
+  img {
+    height: rhythm(4);
+    transform: translateY(- rhythm()/2);
+    padding-left: 8px;
   }
 }

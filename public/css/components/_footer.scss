@@ -1,14 +1,11 @@
 .footer {
-  width: auto;
-  background: palette(blue);
-  text-align: center;
-  color: palette(white);
-  padding: ritmo(6) 20px ritmo(2) 20px;
+  @extend .section-green-commons;
+  padding: rhythm(6) 20px rhythm(2) 20px;
 
   p {
 
     @include mq($until: break-medium-small) {
-      @include ritmo-font-size(14px);
+      @include adjust-font-size-to(14px);
     }
   }
 
@@ -18,7 +15,7 @@
     transition: background ease 0.5s;
 
     &:hover {
-      background: palette(blue, dark);
+      background: palette(mzharp, dark);
     }
   }
 }

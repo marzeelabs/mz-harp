@@ -1,11 +1,11 @@
 .footer {
   @extend .section-green-commons;
-  padding: rhythm(6) 20px rhythm(2) 20px;
+  padding: ritmo(6) 20px ritmo(2) 20px;
 
   p {
 
     @include mq($until: break-medium-small) {
-      @include adjust-font-size-to(14px);
+      @include ritmo-font-size(14px);
     }
   }
 

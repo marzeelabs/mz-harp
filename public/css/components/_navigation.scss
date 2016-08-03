@@ -1,23 +1,23 @@
 // Navigation styles
 .navigation {
   width: 100%;
-  max-height: rhythm(10);
+  max-height: ritmo(10);
   text-align: center;
   text-transform: uppercase;
   position: relative;
   background-color: palette(mzharp, dark);
 
   a {
-    @include adjust-font-size-to(rhythm(3));
+    @include ritmo-font-size(ritmo(3));
     color: palette(white);
-    padding: rhythm(4) 0;
+    padding: ritmo(4) 0;
     display: block;
 
     @include mq($from: break-medium) {
-      padding: rhythm() 16px;
+      padding: ritmo() 16px;
       transition: background 0.3s ease;
       border-radius: 20px;
-      @include adjust-font-size-to(rhythm(2));
+      @include ritmo-font-size(ritmo(2));
     }
 
     &:hover {
@@ -62,7 +62,7 @@
     top: 0;
     left: 0;
     z-index: 9999;
-    max-height: rhythm(20);
+    max-height: ritmo(20);
   }
 }
 
@@ -76,7 +76,7 @@
     margin: 0;
 
     .is-open & {
-      max-height: rhythm(134);
+      max-height: ritmo(134);
     }
   }
 
@@ -89,10 +89,10 @@
 .navigation__mobile-menu__icon {
   display: block;
   position: absolute;
-  top: rhythm(5);
+  top: ritmo(5);
   right: 10px;
   width: 30px;
-  height: rhythm()/2;
+  height: ritmo()/2;
   background-color: palette(white);
 
   &:before, &:after {
@@ -101,16 +101,16 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: rhythm()/2;
+    height: ritmo()/2;
     background-color: palette(white);
   }
 
   &:before {
-    top: - rhythm(1.5);
+    top: - ritmo(1.5);
   }
 
   &:after {
-    bottom: - rhythm(1.5);
+    bottom: - ritmo(1.5);
   }
 
   .is-open & {
@@ -133,7 +133,7 @@
   position: relative;
   overflow: hidden;
   margin: 0;
-  height: rhythm(10);
+  height: ritmo(10);
   cursor: pointer;
   margin-left: 55px;
 

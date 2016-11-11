@@ -36,6 +36,17 @@ For development guidelines, please check the harp documentation at http://harpjs
 
 In order to review the static site, this boilerplate is integrated with [Heroku's pipelines](https://devcenter.heroku.com/articles/pipelines), which spins up a new site for each pull request and commit.
 
-## Credits 
+Travis is also setup to automatically build the website and deploy the static files to a branch on Github:
+
+1. Install the Travis CLI tool with `gem install travis`.
+2. Log in to Travis with `travis login`.
+3. Create a new RSA key with `ssh-keygen -t rsa -C "Deploy key for <repo>" -f deploy_key` (don't use a passphrase!).
+4. Put the contents of the generated file **deploy_key.pub** into https://github.com/<username>/<repository>/settings/keys as new deploy key with write access. You can delete this file, you won't need it anymore.
+5. Use the Travis CLI to encrypt your file with `travis encrypt-file deploy_key --add`. The *add* option should automatically update your .travis.yml file with a line starting with "openssl aes-256" in the "before_install" section.
+6. Delete the previously generated **deploy_key** file - do not commit it to the repository! The only file you must commit is the encrypted file **deploy_key.enc**.
+7. Configure the *DEPLOY_FROM* and *DEPLOY_TO* branches in **scripts/deploy.sh** and the git username and email you want to show up in the deploy commits.
+8. When a PR is successfully merged to the **DEPLOY_FROM** branch you chose, Travis will build the website and commit the result to your chosen **DEPLOY_TO** branch. Don't forget that Travis must be set up to build PRs AND pushes.
+
+## Credits
 
 Made by [Marzee Labs](http://marzeelabs.org)
